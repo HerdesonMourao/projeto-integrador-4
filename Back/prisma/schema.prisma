@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum CardTypes {
+  CREDIT
+  DEBIT
+
+  @@map("cards_types")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  username     String
+  password     String
+  cpf          String   @unique
+  email        String   @unique
+  phone        String
+  public_place String
+  house_number String
+  district     String
+  zip_code     String
+  city         String
+  is_activated Boolean  @default(true)
+  created_at   DateTime @default(now()) @map("created_at")
+  updated_at   DateTime @updatedAt @map("updated_at")
+
+  @@map("user")
+}
+
+model Cards {
+  id Int @id @default(autoincrement())
+}
