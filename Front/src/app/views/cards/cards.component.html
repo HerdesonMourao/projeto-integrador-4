@@ -1,0 +1,67 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-light">Cartões</h1>
+        <br />
+        <a [routerLink]="['/card/new']" class="btn btn-outline-primary"
+          >Novo cartão</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="row">
+    <div id="div-col12" class="col-12">
+      <div class="card">
+        <div class="card-body" id="card-body-table">
+          <input
+            type="search"
+            name="searchCard"
+            id="searchCard"
+            class="form-control"
+            placeholder="Pesquisar ..."
+            (keyup)="filterCard($event)"
+          />
+          <table class="table" id="cardTable">
+            <thead>
+              <tr>
+                <th>NÚMERO</th>
+                <th>TIPO</th>
+                <th>BANDEIRA</th>
+                <th>LIMITE</th>
+                <th>VALOR ATUAL</th>
+                <th>FECHAMENTO DA FATURA</th>
+                <th>AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let card of cards">
+                <td>{{ card.card_number }}</td>
+                <td *ngIf="card.type == 'CREDIT'">Crédito</td>
+                <td *ngIf="card.type == 'DEBIT'">Débito</td>
+                <td>{{ card.flags }}</td>
+                <td>R$ {{ card.limit }}</td>
+                <td>R$ {{ card.current_value }}</td>
+                <td>{{ card.closing_day }}</td>
+                <td>
+                  <i
+                    class="fas fa-pencil-alt fa-lx"
+                    (click)="onEdit(card.id)"
+                  ></i>
+                  &nbsp;
+                  <i
+                    class="fas fa-trash-alt fa-lx"
+                    (click)="onDelete(card.id)"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

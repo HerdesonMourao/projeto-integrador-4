@@ -1,0 +1,44 @@
+.container{
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.content{
+  font-size: 14px;
+}
+
+.container-fluid{
+  color: rgb(12, 10, 10);
+}
+
+.card-body{
+  display: flex;
+  color: rgb(0, 0, 0);
+}
+
+#email{
+  width: 475px;
+}
+
+.flex{
+  display: flex;
+  margin-top: 10px;
+}
+
+// Espaco entre os inputs
+.line-two + .line-two{
+  margin-left: 15px;
+}
+
+.line-three + .line-three{
+  margin-left: 15px;
+}
+
+// Espaco entre os inputs
+.line-one + .line-one{
+  margin-left: 15px;
+}
+
+#validationMessage{
+  color: red;
+}

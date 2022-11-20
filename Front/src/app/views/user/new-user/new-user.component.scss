@@ -1,0 +1,44 @@
+.container{
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.content{
+  font-size: 14px;
+}
+
+.container-fluid{
+  color: white;
+}
+
+.user-body{
+  background-color:#0e1726;
+  color: white;
+}
+
+#email{
+  width: 475px;
+}
+
+.flex{
+  display: flex;
+  margin-top: 10px;
+}
+
+// Espaco entre os inputs
+.line-two + .line-two{
+  margin-left: 15px;
+}
+
+.line-three + .line-three{
+  margin-left: 15px;
+}
+
+// Redimencionando campos inputs
+.line-one{
+  width: 100%;
+}
+
+#validationMessage{
+  color: red;
+}

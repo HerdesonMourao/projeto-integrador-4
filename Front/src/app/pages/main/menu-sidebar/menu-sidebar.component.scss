@@ -1,0 +1,41 @@
+.main-sidebar {
+  background-color: #5892C1;
+  max-height: 90vh;
+}
+.sidebar{
+  max-height: 100vh;
+  overflow-x: scroll !important;
+}
+.brand-link {
+  background-color: #075390;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  border-bottom-width: 0px;
+  padding-bottom: 14px !important;
+  padding-top: 12px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.nav-link{
+  background-color: #075390;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+  color: #ffffff;
+}
+
+.nav-link .nav-item{
+  background-color: #5892C1;
+}
+.nav-link .dropdown-toggle{
+  margin-top: 4px;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+  background-color: #4d7793;
+  color: #fff;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-initial>.nav-link.active {
+  background-color: #075390;
+  color: #ffffff;
+}

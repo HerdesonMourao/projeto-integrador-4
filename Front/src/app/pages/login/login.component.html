@@ -1,0 +1,32 @@
+<div class="login-box container">
+  <div class="container-form">
+      <div class="login login-form">
+          <div class="login-body">
+            <div class="container-login">
+              <p class="login-box-msg">Login</p>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <span class="fas fa-user"></span>
+                          </div>
+                      </div>
+                      <input id="username" name="username" formControlName="username" type="text" class="form-control" placeholder="Digite seu login">
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <span class="fas fa-lock"></span>
+                          </div>
+                      </div>
+                      <input id="password" name="password" formControlName="password" type="password" class="form-control" placeholder="Digite sua senha">
+                  </div>
+                  <div class="btn-confirmed">
+                     <app-button (click)="login()" [type]="'submit'" [block]="true" [text]="'Acessar'" [loading]="isAuthLoading"></app-button>
+                  </div>
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

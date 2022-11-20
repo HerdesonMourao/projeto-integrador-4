@@ -1,0 +1,122 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Cartões</h1>
+        <br />
+        <a [routerLink]="['/card']" class="btn btn-outline-primary"
+          >Listar Cartões</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="cardForm" (ngSubmit)="register()">
+        <div class="form-group">
+          <h5>Dados</h5>
+          <div class="flex">
+            <div class="line-one">
+              <label for="card_number">Número do cartão*</label>
+              <input
+                id="card_number"
+                name="card_number"
+                type="text"
+                class="form-control"
+                placeholder="0000000"
+                formControlName="card_number"
+                (blur)="blurValidationRequired('card_number')"
+              />
+              <div id="validationMessage" *ngIf="card_number.errors">
+                <p *ngIf="card_number.errors.required && context_card_number == 'card_number'">
+                  Número do cartão é obrigatório.
+                </p>
+              </div>
+            </div>
+            <div class="line-one">
+              <label for="type">Tipo*</label>
+              <select id= "type"  class="form-control" formControlName="type" (change)="checkTypeCard($event)">
+                <option value="">-- Selecione --</option>
+                <option value="CREDIT">CREDITO</option>
+                <option value="DEBIT">DEBITO</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="line-two">
+              <label for="flags">Bandeira*</label>
+              <input
+                id="flags"
+                name="flags"
+                type="text"
+                class="form-control"
+                formControlName="flags"
+                (blur)="blurValidationRequired('flags')"
+              />
+              <div id="validationMessage" *ngIf="flags.errors">
+                <p *ngIf="flags.errors.required && context_flags == 'flags'">
+                  Valor é obrigatório.
+                </p>
+              </div>
+            </div>
+            <div class="line-two" [hidden]="credit_type">
+              <label for="limit">Limite*</label>
+              <input
+                id="limit"
+                name="limit"
+                type="text"
+                class="form-control"
+                placeholder="0000.00"
+                formControlName="limit"
+                currencyMask
+              />
+            </div>
+            <div class="line-two" [hidden]="credit_type">
+              <label for="current_value">Valor Atual*</label>
+              <input
+                id="current_value"
+                name="current_value"
+                type="text"
+                class="form-control"
+                placeholder="0000.00"
+                formControlName="current_value"
+                currencyMask
+              />
+            </div>
+          </div>
+          <div class="flex">
+            <div class="line-three" [hidden]="credit_type">
+              <label for="closing_day">Fechamento da Fatura*</label>
+              <input
+                id="closing_day"
+                name="closing_day"
+                type="text"
+                class="form-control"
+                placeholder="00"
+                mask="00"
+                formControlName="closing_day"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="button-container" style="display: flex; gap: 10px">
+          <a
+            [routerLink]="['/card']"
+            type="button"
+            class="btn btn-outline-danger"
+          >
+            <i class="fas fa-times"></i>
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i>
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

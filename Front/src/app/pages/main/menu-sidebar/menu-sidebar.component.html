@@ -1,0 +1,83 @@
+<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4">
+  <a [routerLink]="['/dashboard']" class="brand-link">
+    <span class="brand-text font-weight-light">MPG Finanças</span>
+  </a>
+
+  <div class="sidebar">
+    <nav class="mt-4">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column nav-collapse-hide-child"
+        data-widget="treeview"
+        data-api="tree"
+        data-accordion="true"
+        role="menu"
+      >
+        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+          <a [routerLink]="['/']" class="nav-link active">
+            <i class="nav-icon far fas fa-home"></i>
+            <p>Início</p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="javascript:void(0)" class="nav-link">
+            <i class="nav-icon fas fa-plus-circle"></i>
+            <p>
+              Cadastro
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a [routerLink]="['/user']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Usuário</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/revenue']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Receita</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/card']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Cartão</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/category']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Categoria</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/expenditure']" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Despesa</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="javascript:void(0)" class="nav-link">
+            <i class="nav-icon fas fa-plus-circle"></i>
+            <p>
+              Relatório
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Gráfico</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

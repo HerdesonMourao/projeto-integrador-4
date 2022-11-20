@@ -1,0 +1,117 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-light">Usuários</h1>
+        <br />
+        <a [routerLink]="['/user/new']" class="btn btn-outline-primary" [hidden]="role_types">Novo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="row">
+    <div id="div-col12" class="col-12">
+      <div class="user">
+        <div class="user-body" id="user-body-table">
+          <input
+            type="search"
+            name="searchUser"
+            id="searchUser"
+            class="form-control"
+            placeholder="Pesquisar ..."
+            (keyup)="filterUser($event)"
+          />
+          <table class="table" id="userTable">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>WHATSAPP</th>
+                <th>EMAIL</th>
+                <th>DATA DE CADASTRO</th>
+                <th>AÇÕES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.whatsapp }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.created_at | date: "dd/MM/yyyy" }}</td>
+                <td>
+                  <i
+                    class="fas fa-pencil-alt fa-lx"
+                    (click)="onEdit(user.id)"
+                    [hidden]="role_types"
+                  ></i>
+                  &nbsp;
+                  <i
+                    class="fas fa-key fa-lx"
+                    (click)="openChangePassword(user.id, myModalUpdatePassword)"
+                  ></i>
+                  &nbsp;
+                  <i
+                    class="fas fa-trash-alt fa-lx"
+                    (click)="onDelete(user.id)"
+                    [hidden]="role_types"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #myModalUpdatePassword let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Troca de senha</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="passwordChange" id="passwordChange" (ngSubmit)="updatePass()">
+          <div class="row mb-2">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label for="">Senha:</label>
+                      <input
+                          type="password"
+                          id="password"
+                          (blur)="isEqualPasswords()"
+                          formControlName="password"
+                          class="form-control"
+                          name="password"
+                      >
+                  </div>
+              </div>
+          </div>
+          <div class="row mb-2">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label for="">Confirme sua senha:</label>
+                      <input
+                          type="password"
+                          id="confirmPassword"
+                          (blur)="isEqualPasswords()"
+                          class="form-control"
+                          formControlName="confirmPassword"
+                          name="password">
+                  </div>
+                  <div id="validationMessage" *ngIf="isNotEqual === true">
+                      <p>
+                        As senhas devem ser iguais.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="modal.close('Cancel click')">Cancelar</button>
+      <button type="submit" class="btn btn-primary" form="passwordChange">Salvar</button>
+    </div>
+</ng-template>

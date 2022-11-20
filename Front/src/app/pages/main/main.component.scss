@@ -1,0 +1,28 @@
+:host {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.content-wrapper{
+  height: 90vh;
+  overflow-y: scroll;
+  background-color: #eaedef;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.wrapper {
+  min-height: calc(100vh - 114px);
+  height: 100%;
+  background-color: #ffffff;
+}
+#sidebar-overlay{
+  background-color: rgba(255,255,255, 0.2);
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+ul{
+  background-color: #5892C1 !important;
+}
+.nav-item .dropdown .user-menu{
+  background: #5892C1;
+}

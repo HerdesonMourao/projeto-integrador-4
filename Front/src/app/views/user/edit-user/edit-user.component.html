@@ -1,0 +1,155 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Usuários</h1>
+        <br />
+        <a [routerLink]="['/user']" class="btn btn-outline-primary"
+          >Listar Usuários</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="user">
+    <div class="user-body">
+      <form [formGroup]="userForm" (ngSubmit)="register()">
+        <div class="form-group">
+          <h5>Dados</h5>
+          <div class="flex">
+            <div class="line-one">
+              <label for="name">Nome*</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                class="form-control"
+                placeholder="nome"
+                formControlName="name"
+                (blur)="blurValidationRequired('name')"
+              />
+              <div id="validationMessage" *ngIf="name.errors">
+                <p *ngIf="name.errors.required && context_name == 'name'">
+                  Nome é obrigatório.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="line-two">
+              <label for="username">Login</label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                class="form-control"
+                formControlName="username"
+                placeholder="login"
+                (blur)="blurValidationRequired('username')"
+              />
+              <div id="validationMessage" *ngIf="username.errors">
+                <p *ngIf="username.errors.required && context_username == 'username'">
+                  Login é obrigatório.
+                </p>
+              </div>
+            </div>
+            <!-- <div class="line-two">
+              <label for="password">Senha</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="senha"
+                (blur)="blurValidationRequired('password')"
+              />
+              <div id="validationMessage" *ngIf="password.errors">
+                <p *ngIf="password.errors.required && context_password == 'password'">
+                  Senha é obrigatório.
+                </p>
+              </div>
+            </div> -->
+            <div class="line-two">
+              <label for="role">Cargo*</label>
+              <select id= "role"  class="form-control" formControlName="role">
+                <option value="">-- Selecione --</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="CLIENTE">CLIENTE</option>
+              </select>
+            </div>
+            <div class="line-two">
+              <label for="avatar_logo">Avatar</label>
+              <input
+                id="avatar_logo"
+                name="avatar_logo"
+                type="text"
+                class="form-control"
+                formControlName="avatar_logo"
+                placeholder="avatar"
+              />
+            </div>
+          </div>
+
+          <br />
+
+          <h5>Contato</h5>
+          <div class="flex">
+            <div class="line-three">
+              <label for="whatsapp">Whatsapp</label>
+              <input
+                id="whatsapp"
+                name="whatsapp"
+                type="text"
+                class="form-control"
+                placeholder="(00) 0 0000-0000"
+                formControlName="whatsapp"
+                maxlength="16"
+                mask="(00) 0 0000-0000"
+                (blur)="blurValidationRequired('whatsapp')"
+              />
+              <div id="validationMessage" *ngIf="whatsapp.errors">
+                <p *ngIf="whatsapp.errors.required && context_whatsapp == 'whatsapp'">
+                  Whatsapp é obrigatório.
+                </p>
+              </div>
+            </div>
+            <div class="line-three">
+              <label for="email">Email*</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="email"
+                (blur)="blurValidationRequired('email')"
+              />
+              <div id="validationMessage" *ngIf="email.errors">
+                <p *ngIf="email.errors.required && context_email == 'email'">
+                  Email é obrigatório.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-container" style="display: flex; gap: 10px">
+          <a
+            [routerLink]="['/user']"
+            type="button"
+            class="btn btn-outline-danger"
+          >
+            <i class="fas fa-times"></i>
+            Cancelar
+          </a>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i>
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
