@@ -98,24 +98,7 @@ class userController {
 
   public async index(request: Request, response: Response) {
     try {
-      const { id } = request.params;
-
-      const user = await prismaClient.user.findFirst({
-        where: {
-          id: Number(id)
-        }
-      });
-
-      if (!user) {
-        return response.status(404).json({
-          error: true,
-          message: 'Usuário não existe'
-        });
-      }
-
-      let usersList;
-
-      usersList = await prismaClient.user.findMany({
+      const usersList = await prismaClient.user.findMany({
         select: {
           id: true,
           name: true,
@@ -134,7 +117,6 @@ class userController {
           updated_at: true
         },
         where: {
-          id: Number(id),
           is_activated: true
         },
         orderBy: {
